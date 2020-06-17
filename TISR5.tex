@@ -1,0 +1,506 @@
+\documentclass[12pt,abstract]{scrartcl}
+\usepackage[utf8]{inputenc}
+
+\title{Theory of Inhomogeneous Short Range Order and Calphad Modeling. }
+\author{Edward Kremer \\ \\ \textit{email: edk137@gmail.com}}
+
+\subtitle{Part 5. Extended Formalism}
+
+
+
+\date{June 2020}
+
+
+%%\usepackage{natbib}
+\usepackage[sort&compress,numbers]{natbib}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{subcaption}
+\usepackage{hyperref}
+\usepackage{siunitx} % Required for alignment
+\usepackage{chemformula}
+\let\ce\ch
+\sisetup{
+  round-mode          = places, % Rounds numbers
+  round-precision     = 3, % to 2 places
+}
+\hyphenation{ana-ly-sis}
+\hyphenation{trans-pa-rent}
+\hyphenation{ge-ne-ra-li-za-tion}
+
+\graphicspath{ {images/} }
+%\bibliographystyle{plain}
+%\linespread{1.6}
+%\setlength{\parindent}{8em}
+%\setlength{\parskip}{1em}  %paragraph separation
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+
+Formalism of Theory of Inhomogeneous Short Range Order is extended to include systems with multiple components and multiple sublatices.
+
+The generalization is achieved in agreement with the basic formal structure of the theory and is  in many respects seamless.
+
+The extended formalism is expected to increase significantly the area of applicability of theory.
+
+\textbf{Keywords:} Computational Thermodynamics;  Thermodynamic Modeling;  Phase Diagram Calculation; Multicomponent systems; Interstitial Alloys; Surrounded Atom Model
+
+\end{abstract}
+
+
+
+\section{Introduction}
+
+Formalism of Theory of Inhomogeneous Short Range Order (TISR), presented in \cite{TISR_p1}, was successfully used for description the thermodynamics of substitution  alloys with two components (\cite{TISR_p1}, \cite{TISR_p2},  \cite{TISR_p3}), but can be  applied also, after some adjustments,  to the systems containing  more than two structural elements and  to the systems that exhibit multilattice substructure. 
+This requires some natural changes to formalism, but we still can hope that such generalization will not  destroy the main advantages of the theory revealed in the previous parts of the publication.
+
+As  result, we will produce several versions devoted to this or that particular task, but these versions still follow the established internal logical structure of the theory  based on a detailed description of the Short Range Order and its spatial variations.
+
+The intended modifications could be presented in the very general form  (including arbitrary number of components or arbitrary number of sublattices) but we prefer to consider some special cases that are easier to follow and understand.
+ In most cases the more general version can be written down without difficulties.
+
+
+In particular, in the section 2 we will consider a three-component version of theory being applied to a substitution alloy. 
+We will see that additional components will be included in the processing just by adding additional indexes to variables. 
+
+
+Section 3 deals with the case where the basic elements of formalism -- cells -- have some internal asymmetry that must be explicitly  taken into account. 
+Such asymmetry can be detected even in the cases when the mixture by itself still has a purely homogeneous substitution structure.
+Possible applications are discussed, in particular as a method to fix errors in the Surrounded Atom Model \cite{Mathieu_1965, Hicter1967}.
+
+Section 4 discusses important details that can be identified when considering interstitial alloys and that must be taken into account to ensure the best internal consistency of the theory.
+
+Liquid and solid alloys  with a multigrid substructure are important area of research that was just slightly touched in this article. 
+We planning to continue its study elsewhere.
+
+Systems with Long Range Order certainly have to be included in this list.
+
+
+
+
+\section{Multicomponent Systems}
+
+As was indicated in the Introduction, we will restrict our presentation  by three component systems  to make formalism more transparent. 
+Generalizations are really straightforward.
+
+Other simplification, we will use in this section the notations introduced in \cite{TISR_p1}, with some evident modifications.
+Comparison of new formulas with the corresponding expressions from \cite{TISR_p1} could reveal deep similarities that should significantly assist the reading.
+
+Formalism is still based on using \textit{cells} as the main element of description. 
+The size of cell is denoted as \( k \).
+
+For the lattice having \(N = N_1 + N_2 + N_3\) knots the total number of cells is
+\begin{equation} \label{M}
+M = N / k 
+\end{equation}
+
+
+Cells can be differentiated   by their composition,  and when the composition  is specified -- by the arrangement of constituent atoms.
+
+To describe the values associated with a cell, we need a few indexes \( i, j, \alpha \), where the first two indexes 
+show that the cell has \( i \) atoms of type 1, \( j \) atoms of type 2, and  \( k - i -j \) atoms of type 3, while the last index numbers all possible for the cell of specified content micro-configurations:
+\[ \alpha = 1, 2, \dots \binom{k}{i, j} \]
+
+Based on these notations, all symbols marked in \cite{TISR_p1} by two subscripts \( i,  \alpha \) will have in the  current version three subscripts \( i, j, \alpha \). 
+
+In particular, the composition of alloy  can be expressed as follows:
+\begin{equation} \label{N1}
+\begin{split}
+    N_1 &= \sum_{i j\alpha} i M_{i j \alpha}\\
+    N_2 &= \sum_{i j\alpha} j M_{i j \alpha}\\
+   N_3 &= \sum_{i j \alpha} (k-i -j) M_{i j \alpha}
+\end{split}
+\end{equation}
+
+
+
+Omitting all  steps that should precisely repeat the steps described in details in  \cite{TISR_p1}, we can  write down the final expression for the free energy:
+
+\begin{equation} \label{free_energy}
+\begin{split}
+    F &= \beta\sum_{i\alpha} U_{i j \alpha} M_{i j \alpha} - \theta(1- \gamma) \ln K_0 - \theta \gamma \ln K_1\\ &+ \lambda_1 \left(N_1 - \sum_{i j \alpha} i M_{i j \alpha} \right) 
++ \lambda_2 \left(N_2 - \sum_{i j \alpha} j M_{i j \alpha}   \right) \\ &
++ \lambda_3 \left(N_3- \sum_{i j \alpha} (k-i-j) M_{i j \alpha}   \right)
+\end{split}
+\end{equation}
+where this time:
+
+
+\begin{equation} \label{bragg}
+K_0 = \frac{N!}{N_1! N_2! N_3!}
+\end{equation}
+and
+
+
+\begin{equation} \label{K1}
+K_1 = \frac{M!}{\prod\limits_{i j \alpha} ( M_{i j \alpha})!}
+\end{equation}
+
+Structural parameters \( \beta \) and \( \gamma \) have values (and meaning) defined in \cite{TISR_p1, TISR_p4}.
+
+The basic equations of model:
+\begin{equation} \label{basic_equation}
+    \frac{\partial F}{\partial M_{i j \alpha}} = \beta U_{i j \alpha} + \theta \gamma \ln p_{i j \alpha} - i \lambda_1 - j \lambda_2 - (k-i-j) \lambda_3 = 0 
+\end{equation}
+(where $ p_{i j \alpha} =  M_{i j \alpha} / M$) can be immediately solved as
+\begin{equation} \label{pia}
+    p_{i j \alpha} = \exp \left(- {\frac{\beta U_{i j \alpha}}{\theta\gamma }}\right) b_1^i b_2^j b_3^{k-i -j}
+\end{equation}
+where $b_j$ are defined through
+\begin{equation}
+    \lambda_j = \theta \gamma \ln b_j, \quad  j = 1, 2, 3
+\end{equation}
+
+Taking in the account the explicit dependency of $K_0$ on $N_j$ (\ref{bragg}) we can now calculate the chemical potentials of components $\mu_j$ using the expression for the free energy (\ref{free_energy}):
+
+\begin{equation} \label{chim_pot}
+    \mu_j = \frac{\partial F}{\partial N_j} =  \theta (1 - \gamma) \ln x_j + \lambda_j = \theta \ln x_j + \theta \gamma \ln \frac{b_j}{x_j}
+\end{equation}
+
+As in \cite{TISR_p1}, we introduce now a few additional variables that  help to present the  solution in a parametric form.
+The specific form of the dependency of expression (\ref{pia}) on $b_i$ makes it convenient to introduce  new, reduced, notation $p_{i j}$:
+\begin{equation} \label{pi}
+    p_{i j} = \sum_\alpha p_{i j \alpha} = W_{i j} b_1^i b_2^j b_3^{k-i-j}
+\end{equation}
+where
+\begin{equation} \label{Wij}
+    W_{i j} = \sum_\alpha \exp \left(- {\frac{\beta U_{i j \alpha}}{\theta\gamma }}\right)
+\end{equation}
+can be treated as the statistical sum \cite{kersonhuang2018} of the cell containing $i$ atoms of type 1, $j$ atoms of type 2, and $k-i-j$ atoms of type 3. 
+Renormalization factor $\beta / \gamma$ in this expression is responsible for the fact that every cell is part of endless grid rather than a separate object.
+
+The new variables can be used to rewrite the equations (\ref{N1})  in a more compact form:
+
+
+\begin{equation} \label{sum}
+\begin{split}
+    \sum_{i j} p_{i j} &= b_3^k \sum_{i j} W_i c^i d^j = 1 \\
+    \sum_{i j} i p_{i j} &= b_3^k \sum_i i W_{i j} c^i d^j= k x_1 \\
+    \sum_{i j} j p_{i j} &= b_3^k \sum_i j W_{i j} c^i d^j= k x_2 
+\end{split}
+\end{equation}
+where the new notations 
+\begin{equation} \label{c=}
+    c := b_1 / b_3, \quad d:= b_2 / b_3
+\end{equation}
+were introduced to be used as the independent variables for parametric representation both of composition and thermodynamic activities of components.
+
+
+Namely, the first equation of (\ref{sum}) defines $b_3$ as a simple  function of $c$ and $d$. 
+Then the equations (\ref{c=}) define $b_1$  and $b_2$ as  functions of $c$ and $d$. 
+This information can be directly substituted into expressions for $x_j$ and $\mu_j$ completing the calculation.
+
+
+Applying the standard thermodynamic formulas \cite{kersonhuang2018} to the expression for the free energy (\ref{free_energy}) and remembering definition (\ref{Wij}) of $W_{i j}$  we can calculate the integral enthalpy of the system:
+
+\begin{equation} \label{H}
+\begin{split}
+    H &= - \theta^2 \frac{\partial( F/\theta)}{\partial \theta} \\
+    &= - \theta^2 \beta\sum_{i j \alpha} \frac{\partial (U_{i j \alpha}/\theta)}{\partial \theta} M_{i j \alpha}
+    = \gamma\theta^2  M \sum_{i j} \frac{\partial W_{i j}}{\partial \theta} b_1^i b_2^j b_3^{k-i-j}\\
+    &= \gamma\theta^2  M \frac{\sum\limits_{i j} c^i d^j \partial W_{i j}/\partial \theta}{\sum\limits_{i j} c^i  d^j W_{i j} }
+\end{split}    
+\end{equation}
+
+The expression for the partial enthalpy of components can be received  by reversion of $2 \times 2$ jacobian and is omitted here because it requires numerical calculations.
+
+\section{Asymmetrical cells}
+
+In all cases considered  in the previous parts of publication we silently assumed that a cell is completely symmetrical and all knots of cell are equivalent. 
+It was certainly true when we considered  a triangle (in the case of hexagonal $2d$ lattice) or a tetrahedron (in the case of FCC or BCC lattices).
+
+In the general case it is not correct and it requires some modifications to our formalism. 
+
+To clarify the nature of the problem we  can use  a specific example. 
+In one of the following articles we will consider Surrounded Atom Model (SAM) \cite{Mathieu_1965, Hicter1967} by treating it as a partial case of TISR. 
+The atom group considered by SAM -- a central atom surrounded by $z$ nearest  neighbors -- is certainly asymmetrical, since the central atom occupies a special position.
+As a result, the distribution of atoms within cells will be distorted and no longer represent the distribution of atoms in the mixture.
+
+
+
+To handle this anomaly we can present a cell as a combination of a few sub-cells -- where  every part is completely symmetrical --  and apply the equations of material balance to every part. 
+For example, in the case of SAM we will have two sub-cells: one consisting from the single central atom, and the other one, that includes the remaining $z$ peripheral atoms.
+
+To describe this new configuration we must introduce new notation. 
+We will again describe  the cells by three indexes, but meaning of these indexes will be quite distinct from what we saw in the previous section.
+
+
+We returning to a \textit{binary} disordered alloy on lattice having $N = N_1 + N_2$ knots.
+Cell will be selected to have two sub-cells,  where the first sub-cell contains $k_1$ knots and the second -- $k_2$ knots, correspondingly. 
+Thus, the total size of the cell is
+\begin{equation} \label{k}
+    k = k_1 + k_2
+\end{equation}
+
+To completely describe a cell we must specify content of every sub-cell and indicate how atoms are arranged inside every sub-cell.
+
+Accordingly, $M_{i j \alpha}$ means the number of cells having every:
+
+i atoms of type $a$ in  sub-cell 1;
+
+j atoms of type $a$ in  sub-cell 2;
+
+$\alpha$ will number all possible configurations of cell having $i$ atoms of type $a$ in sub-cell 1 and $j$  such atoms in sub-cell 2:
+
+ 
+\begin{equation} \label{alpha}
+\alpha = 1, 2, \dots \binom{k_1}{i} \binom{k_2}{j}
+\end{equation}
+
+It has to be emphasized again that the meaning of $M_{i j \alpha}$ symbols just introduced is completely distinct from the similar abbreviation used in the previous section, so two have not be confused.
+
+We can calculate the total number $N_1^{(1)} $ of atoms $a$ located inside sublattice 1:
+
+\begin{equation} \label{N11}
+N_1^{(1)} = \sum_{i j \alpha} i M_{i j \alpha}
+\end{equation}
+while the  total number $N_1^{(2)} $ of atoms $a$ located inside  sublattice 2 is:
+\begin{equation} \label{N12}
+N_1^{(2)} = \sum_{i j \alpha} j M_{i j \alpha}
+\end{equation}
+
+Concentration of atoms $a$ has to be ensured to be the same in both sub-cell sets, so we have to introduce the following symbols necessary to express the corresponding conditions:
+
+\begin{equation} \label{M}
+\begin{split}
+M =&  \sum_{i j \alpha}  M_{i j \alpha} = \frac{N}{k}\\
+ p_{i j \alpha} = &  M_{i j \alpha} / M
+\end{split}
+\end{equation}
+
+If $x_1$ is the concentration of atoms $a$ in the mixture then the following conditions has to be enforced:
+
+\begin{equation} \label{x11}
+\begin{split}
+x_1 & = \sum_{i j \alpha} \frac{i}{k_1} p_{i j \alpha}\\
+x_1 & = \sum_{i j \alpha} \frac{j}{k_2} p_{i j \alpha}\\
+1 &= \sum_{i j \alpha} p_{i j \alpha}
+\end{split}
+\end{equation}
+
+Omitting again all  steps that should basically repeat the steps described in details in  \cite{TISR_p1}, we can  write down the final expression for the free energy:
+
+\begin{equation} \label{free_energy2}
+\begin{split}
+   & F (N_1, N_2, \lambda_1, \lambda_2, \lambda, p_{i j \alpha}, \theta)  \\
+\\
+&= \beta M \sum_{i\alpha} U_{i j \alpha} p_{i j \alpha} - \theta(1- \gamma) \ln K_0 - \theta \gamma \ln K_1\\ 
+&+ \lambda_1 N \left(x_1 - \sum_{i j \alpha}\frac{i}{k_1} p_{i j \alpha} \right) 
++ \lambda_2 N \left(x_1 - \sum_{i j \alpha} \frac{j}{k_2} p_{i j \alpha}   \right) \\ 
+&+ \lambda N \left(1- \sum_{i j \alpha}p_{i j \alpha}   \right)
+\end{split}
+\end{equation}
+where:
+
+
+\begin{equation} \label{bragg2}
+K_0 = \frac{N!}{N_1! N_2! }
+\end{equation}
+and
+
+
+\begin{equation} \label{K12}
+\ln K_1 = \ln \frac{M!}{\prod\limits_{i j \alpha} ( M_{i j \alpha})!} = - M \sum_{i j \alpha} p_{i j \alpha} \ln p_{i j \alpha}
+\end{equation}
+while  $M$ and $x_1$ are assumed to be expressed through $N_1$ and $N_2$, as we indicated in (\ref{free_energy2}), by providing the  explicit list of  variables the free energy $F$ is depending on.
+
+
+Structural parameters \( \beta \) and \( \gamma \) have values defined in \cite{TISR_p1, TISR_p4}.
+
+The basic equations of model:
+\begin{equation} \label{basic_equation2}
+    \frac{\partial F}{\partial p_{i j \alpha}} = M \beta U_{i j \alpha} + M \theta \gamma \ln p_{i j \alpha} 
+- N \frac{i}{k_1} \lambda_1 - N \frac{j}{k_2} \lambda_2 - N \lambda = 0 
+\end{equation}
+can be immediately solved as
+\begin{equation} \label{pia2}
+    p_{i j \alpha} = \exp \left(- {\frac{\beta U_{i j \alpha}}{\theta\gamma }}\right) b_1^i b_2^j b
+\end{equation}
+where $b$ and $b_j$ are defined through
+\begin{equation}
+\begin{split}
+b_j & = \exp \left( \frac{\lambda_j}{\theta \gamma} \frac{k}{k_j} \right)\\
+\\
+b & =  \exp \left( \frac{\lambda k}{\theta \gamma} \right)
+\end{split}
+\end{equation}
+
+Taking in the account the explicit dependency of $K_0$ on $N_j$ (\ref{bragg2}) we can now calculate the chemical potentials of components $\mu_j$ using the expression for the free energy (\ref{free_energy2}) and applying the equation of equilibrium (\ref{basic_equation2}) to exclude $p_{i j \alpha}$ from the intermediate results:
+
+\begin{equation} \label{mu1}
+\begin{split}
+    \mu_1 &= \frac{\partial F}{\partial N_1} =  \theta (1 - \gamma) \ln x_1  + \lambda  + \lambda_1 + \lambda_2\\
+    \mu_2 &= \frac{\partial F}{\partial N_2} =  \theta (1 - \gamma) \ln x_2  + \lambda 
+\end{split}
+\end{equation}
+
+As usually, we introduce now a few additional variables that  help to derive the parametric solution of the system.
+The specific form of the dependency of expression (\ref{pia2}) on $b_i$ makes it convenient to introduce a new, reduced, notation $p_{i j}$:
+\begin{equation} \label{pi}
+    p_{i j} = \sum_\alpha p_{i j \alpha} = W_{i j} b_1^i b_2^j b
+\end{equation}
+where
+\begin{equation} \label{Wi}
+    W_{i j} = \sum_\alpha \exp \left(- {\frac{\beta U_{i j \alpha}}{\theta\gamma }}\right)
+\end{equation}
+so the equations (\ref{x11})  can be rewritten through the new variables:
+
+\begin{equation} \label{W13}
+\begin{split}
+x_1 &= \sum_{i j } \frac{i}{k_1} W_{i j }  b_1^i b_2^j b\\
+x_1& = \sum_{i j } \frac{j}{k_2} W_{i j }  b_1^i b_2^j b\\
+1 &= \sum_{i j } W_{i j }  b_1^i b_2^j b
+\end{split}
+\end{equation}
+
+To present solution of these equations in a parametric form it is necessary to exclude two variables from the system; unfortunately, it is impossible in the general case. 
+
+However, if one of the sub-cells contains not more than two knots, it can be done.
+
+Let us assume that $k_2 \leq 2$. 
+Then combination of any two equations from (\ref{W13}) reduces to the polynomial of power $k_2$ against $b_2$ and can be explicitly resolved.
+
+We will do it here explicitly for the case of $k_2 = 1$, keeping in mind application to the SAM model.
+
+The following abbreviations
+\begin{equation} \label{S3}
+\begin{split}
+S_j &= \sum_i W_{i j} b_1^i\\
+S_j^a &= \sum_i \frac{i}{k_1}W_{i j} b_1^i\\
+S_j^b &=S_j - S_j^a \\
+\\
+R &= S_0 S_1^b + S_1 S_0^a
+\end{split}
+\end{equation}
+can be used to rewrite equations  (\ref{W13}) in the simplified form:
+\begin{equation} \label{S4}
+\begin{split}
+x_1 &= b (S_0^a + b_2 S_1^a )\\
+x_1 &= b (0 + b_2 S_1)\\
+1 &= b (S_0 + b_2 S_1)
+\end{split}
+\end{equation}
+
+Solution to the last system is easy:
+
+\begin{equation} \label{S5}
+\begin{split}
+b_2 &= \frac{S_0^a}{S_1^b} \\
+\\
+b &= \frac{S_1^b}{R}\\
+\\
+x_1 &= \frac{S_1 S_0^a}{R}
+\end{split}
+\end{equation}
+
+These formulas can be immediately applied to present SAM solution in a parametric form, as will be shown elsewhere.
+
+
+\section{Interstitial Alloys}
+
+There are many directions where the TISR formulas can be generalized.
+
+Until now we discussed exclusively substitution mixtures; interstitial alloys \cite{haidemenopoulos2018} bring up additional nuances.
+
+Presence of several sublattices means also that links between atoms have to be divided in several categories: links between atoms located in the same sublattice versus atoms located in different sublattices.
+
+If we have just two sublattices, then three categories of links can be identified. 
+The total numbers of such links in the system can be denoted $N^{(1-1)}, N^{(1-2)}, N^{(2-2)}$, with evident meaning. 
+The same numbers inside one cell can be defined as 
+$n^{(1-1)}, n^{(1-2)}, n^{(2-2)}$:
+
+\[ n^{(1-1)} + n^{(1-2)} + n^{(2-2)} = k\]
+
+Structural parameter of theory $\beta$ is defined in all previous cases as ratio of two numbers: total count of links in the system to total count of links located inside of system of cells ($m M$), where:
+
+$m$ -- number of links inside one cell;
+
+ $M$ -- total number of cells $= N / k$;
+
+ $N$ -- complete number of atoms in the system.
+ 
+
+Instead of one variable $\beta$ we have in the case  of interstitial alloys several variables 
+\[ \beta^{(j-l)} =\frac{ N^{(j-l)}}{M n^{(j-l)}} \]
+
+Let us consider one cell of type $i \alpha$ with index  $i$ (probably, multicomponent), defining the composition, and index $\alpha$ describing the arrangement of atoms in the cell.
+Energy of such cell can be also  divided in three parts: $U_{i \alpha}^{(1-1)}, U_{i \alpha}^{(1-2)}, U_{i \alpha}^{(2-2)}$ with total energy of cell
+\[
+ U_{i \alpha} =  U_{i \alpha}^{(1-1)} +U_{i \alpha}^{(1-2)} +U_{i \alpha}^{(2-2)}
+\]
+
+Then the total energy of all links of $(j-l)$ type located inside of \textit{all} cells is 
+\[
+\sum_{i \alpha}  U_{i \alpha}^{(j-l)}  M p_{i \alpha}
+\]
+so the total energy of the system is
+\begin{equation} \label{U2}
+ U = \sum_{i \alpha} \left( \beta^{(1-1)} U_{i \alpha}^{(1-1)}  +\beta^{(1-2)} U_{i \alpha}^{(1-2)}  +\beta^{(2-2)} U_{i \alpha}^{2-2)}\right ) M p_{i \alpha} = \sum_{i \alpha} \overline{U}_{i \alpha} M p_{i \alpha}
+\end{equation} 
+
+
+We can see that in general case the expression in brackets cannot be considered as energy of cell. 
+Only when all $\beta^{(j-l)}$ are the same, we returning to the simple expression from the previously considered cases. 
+It can be achieved only when
+\begin{equation} \label{nN}
+n^{(1-1)} : n^{(1-2)} : n^{(2-2)} = N^{(1-1)} : N^{(1-2)} : N^{(2-2)} 
+\end{equation}
+in other words, when the proportion of links of different kind inside one cell is the same as the proportion of these links in the entire system.
+
+Actually, the more complicated form of expression for the energy (\ref{U2}) is irrelevant for model applications since all physically significant functions are expressed through $W_i$ variables, that depend on $\overline{U}_{i \alpha}$ as a whole, rather than on its parts:
+\begin{equation} \label{W2}
+ W_i = \sum_\alpha \exp \left(- {\frac{ \overline{U}_{i \alpha}}{\theta\gamma }}\right)
+\end{equation} 
+In this respect we do not care how $\overline{U}_{i \alpha}$ is expressed through $ U_{i \alpha}^{(j-l)}$.
+
+What is more important, we do not have good method to calculate $\gamma$ in this expression. 
+Typically  we use the "quasichemical" approximation $\gamma = \beta$, but in the current case we do not have a good  definition for $\beta$.
+
+We have two choices how to handle this problem.
+
+First, we my require that the cells be selected so that the condition (\ref{nN}) is met.
+ In this case $\beta$ is good defined and can be used as value for $\gamma$.
+
+Second, if our attempt to ensure  (\ref{nN}) cannot be achieved, we still can try to bring this condition to the best possible form, and then we do not have a better way than treat $\gamma$ as adjustable parameter.
+
+The described above nuances of choosing $\beta$ and $\gamma$ are the only significant details that distinct current case from the multiple cases already considered. 
+A certain type of grid or a particular choice of cells may bring some additional nuances to formalism, but the general form of expression for the free energy will remain largely unchanged.
+
+
+\section{Conclusions}
+
+This article contains mostly technical details of formalism necessary to describe systems more complicated than we considered in the previous parts of this publication.
+
+
+It includes:
+
+ -- multicomponent systems;
+
+-- systems where cells have some asymmetry;
+
+-- interstitial alloys.
+
+It is important that in all cases (including many cases that still remain outside of this article) we still are capable to maintain the  basic  structure of the formalism. 
+Expressions for combinatorial factor are produced according to very strict rules of TISR, which is critically important to ensure the high level of accuracy in treating Short Range Order and calculating  the configurational entropy of the system.
+
+As shown, all cases considered here have a similar  structure inside formalism, what allows to treat multiple diversified cases as part of the same general theory.
+
+The achieved unification is important not only from the principal point of view, but also as a method to  resolve inconsistencies that TISR surprisingly allows to identify in some of the included models.
+
+Even more, the described in \cite{TISR_p4} improved combinatorial factor allows to bring \textit{simultaneously} all the partial cases of TISR to precision significantly exceeding the precision of Quasichemical Theory.
+
+
+
+
+
+
+\bibliographystyle{unsrtnat}
+\bibliography{E:/GIT/TISR/references}
+
+
+\end{document}
+
+
